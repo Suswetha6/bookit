@@ -9,4 +9,4 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: bookit
     ports:
-      - "5432:5432"
+      - "7900:5432"
