@@ -1,4 +1,9 @@
 package org.abhinavgpt.bookit.repositories;
 
-public interface CustomerRepository {
+
+import org.abhinavgpt.bookit.modals.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }
