@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface MovieService {
     List<Movie> getAllMovies();
+
     Movie getMovieById(Long id) throws MovieNotFoundException;
+
     Movie createMovie(MovieDTO movieDTO);
+
     Movie updateMovie(Movie movieDetails);
+
     void deleteMovie(Long id);
 }

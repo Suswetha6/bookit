@@ -15,7 +15,7 @@ public class Event {
     private CinemaHall cinemaHall;
 
     private int remainingTickets;
-    private int price;
+    private double price;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -23,7 +23,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(Movie movie, CinemaHall cinemaHall, int remainingTickets, int price, LocalDateTime startTime, LocalDateTime endTime) {
+    public Event(Movie movie, CinemaHall cinemaHall, int remainingTickets, double price, LocalDateTime startTime, LocalDateTime endTime) {
         this.movie = movie;
         this.cinemaHall = cinemaHall;
         this.remainingTickets = remainingTickets;
@@ -64,11 +64,11 @@ public class Event {
         this.remainingTickets = remainingTickets;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
