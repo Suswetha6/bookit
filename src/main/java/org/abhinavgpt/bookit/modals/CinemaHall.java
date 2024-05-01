@@ -1,5 +1,7 @@
 package org.abhinavgpt.bookit.modals;
 
+package org.abhinavgpt.bookit.modals;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
