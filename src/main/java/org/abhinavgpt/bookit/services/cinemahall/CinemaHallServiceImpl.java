@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CinemaHallServiceImpl implements CinemaHallService {
@@ -24,7 +23,6 @@ public class CinemaHallServiceImpl implements CinemaHallService {
 
     public CinemaHall updateCinemaHall(CinemaHall updatedCinemaHall) {
         return cinemaHallRepository.save(updatedCinemaHall);
-
     }
 
     public void deleteCinemaHall(Long hallId) {

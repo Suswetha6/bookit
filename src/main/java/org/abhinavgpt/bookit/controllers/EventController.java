@@ -1,8 +1,10 @@
 package org.abhinavgpt.bookit.controllers;
 
+import org.abhinavgpt.bookit.dtos.EventDTO;
+import org.abhinavgpt.bookit.exceptions.EventNotFoundException;
 import org.abhinavgpt.bookit.modals.Event;
 import org.abhinavgpt.bookit.services.event.EventService;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,53 +13,43 @@ import java.util.List;
 @RestController
 @RequestMapping
 public class EventController {
-    private EventService eventService;
+    private final EventService eventService;
 
-    // add
+    @Autowired
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
     @PostMapping
-    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
-        Event newEvent = EventService.addEvent(event);
+    public ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDTO) {
+        Event newEvent = eventService.addEvent(eventDTO);
         return ResponseEntity.ok(newEvent);
 
     }
 
-    //update
-
     @PutMapping("/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable long id ,@RequestBody Event Updatedevent) {
-        Event event = EventService.updateEvent(Updatedevent);
+    public ResponseEntity<Event> updateEvent(@PathVariable long id, @RequestBody Event Updatedevent) {
+        Event event = eventService.updateEvent(Updatedevent);
         return ResponseEntity.ok(event);
     }
-
-    //getAll
 
     @GetMapping()
     public ResponseEntity<List<Event>> getAllEvents() {
-        List<Event>  event = eventService.getAllEvents();
+        List<Event> event = eventService.getAllEvents();
         return ResponseEntity.ok(event);
     }
-
-    // getById
 
     @GetMapping("/{id}")
-    public ResponseEntity<Event> getEvent(@PathVariable long id) {
-        Event event = EventService.getEvent((int) id);
+    public ResponseEntity<Event> getEvent(@PathVariable long id) throws EventNotFoundException {
+        Event event = eventService.getEvent(id);
 
         return ResponseEntity.ok(event);
     }
 
-    // deleteById
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<Event> deleteEvent(@PathVariable long id) {
-        EventService.deleteEventById((int) id);
-        return new ResponseEntity<>("Event deleted successfully.", HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> deleteEvent(@PathVariable long id) {
+        eventService.deleteEventById((int) id);
+        return ResponseEntity.ok("Event deleted successfully.");
     }
-
-    // deleteAll
-//    @DeleteMapping()
-//    public ResponseEntity<Event> deleteAllEvents() {
-//        return null;
-//    }
 
 }
