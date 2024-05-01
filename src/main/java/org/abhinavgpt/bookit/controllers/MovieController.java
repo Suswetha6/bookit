@@ -1,5 +1,6 @@
 package org.abhinavgpt.bookit.controllers;
 
+import org.abhinavgpt.bookit.exceptions.MovieNotFoundException;
 import org.abhinavgpt.bookit.modals.Movie;
 import org.abhinavgpt.bookit.services.movie.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public Movie getMovieById(@PathVariable Long id) {
+    public Movie getMovieById(@PathVariable Long id) throws MovieNotFoundException {
         return movieService.getMovieById(id);
     }
 
