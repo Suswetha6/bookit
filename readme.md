@@ -25,3 +25,7 @@ To run the service, you can use the following command:
 ```
 mvn spring-boot:run
 ```
+
+## Database Schema
+
+![Database Schema](./assests/img.png)

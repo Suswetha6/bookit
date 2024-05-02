@@ -1,7 +1,10 @@
 package org.abhinavgpt.bookit.controllers;
 
 import org.abhinavgpt.bookit.dtos.EventDTO;
+import org.abhinavgpt.bookit.exceptions.CinemaHallNotFoundException;
 import org.abhinavgpt.bookit.exceptions.EventNotFoundException;
+import org.abhinavgpt.bookit.exceptions.InvalidTimeSelectionException;
+import org.abhinavgpt.bookit.exceptions.MovieNotFoundException;
 import org.abhinavgpt.bookit.modals.Event;
 import org.abhinavgpt.bookit.services.event.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +23,8 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @PostMapping
-    public ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDTO) {
+    @PostMapping("")
+    public ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDTO) throws CinemaHallNotFoundException, MovieNotFoundException, InvalidTimeSelectionException {
         Event newEvent = eventService.addEvent(eventDTO);
         return ResponseEntity.ok(newEvent);
 

@@ -1,5 +1,6 @@
 package org.abhinavgpt.bookit.controllers;
 
+import org.abhinavgpt.bookit.dtos.MovieDTO;
 import org.abhinavgpt.bookit.exceptions.MovieNotFoundException;
 import org.abhinavgpt.bookit.modals.Movie;
 import org.abhinavgpt.bookit.services.movie.MovieServiceImpl;
@@ -18,7 +19,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
@@ -28,14 +29,14 @@ public class MovieController {
         return movieService.getMovieById(id);
     }
 
-    @PostMapping("/")
-    public Movie createMovie(@RequestBody Movie movie) {
-        return movieService.createMovie(movie);
+    @PostMapping("")
+    public Movie createMovie(@RequestBody MovieDTO movieDTO) {
+        return movieService.createMovie(movieDTO);
     }
 
-    @PutMapping("/{id}")
-    public Movie updateMovie(@PathVariable Long id, @RequestBody Movie movieDetails) {
-        return movieService.updateMovie(id, movieDetails);
+    @PutMapping("")
+    public Movie updateMovie(@RequestBody Movie movieDetails) {
+        return movieService.updateMovie(movieDetails);
     }
 
     @DeleteMapping("/{id}")
